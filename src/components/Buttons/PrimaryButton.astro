@@ -1,0 +1,15 @@
+---
+export interface Props {
+    disabled?: boolean;
+}
+
+const { disabled = false } = Astro.props;
+
+const colorStyles = "text-white-link-water bg-pink-dark enabled:hover:bg-pink-charm enabled:focus-visible:bg-pink-charm";
+---
+
+<button disabled={disabled} class={colorStyles
+    + " min-h-[3rem] px-7 py-2 text-15 enabled:motion-safe:transition-colors enabled:motion-safe:ease-in-out disabled:opacity-50 -tracking-12 font-bold rounded-full "
+    }>
+    <slot />
+</button>

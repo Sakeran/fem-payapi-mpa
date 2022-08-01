@@ -1,0 +1,15 @@
+---
+export interface Props {
+    href?: string;
+}
+
+const { href } = Astro.props;
+
+const colorStyles = "text-white-link-water bg-pink-dark hover:bg-pink-charm focus-visible:bg-pink-charm";
+---
+
+<a href={href || "#" } class={colorStyles
+    + "  min-h-[3rem] inline-flex items-center px-7 py-2 text-15 motion-safe:transition-colors motion-safe:ease-in-out -tracking-12 font-bold rounded-full "
+    }>
+    <slot />
+</a>

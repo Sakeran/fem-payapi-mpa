@@ -1,0 +1,19 @@
+---
+export interface Props {
+    dark?: boolean;
+    disabled?: boolean;
+}
+
+const { dark = false, disabled = false } = Astro.props;
+
+const lightStyles = "text-blue-sj bg-transparent enabled:hover:text-white-pure enabled:focus-visible:text-white-pure enabled:hover:bg-blue-sj enabled:focus-visible:bg-blue-sj border-blue-sj";
+const darkStyles = "text-white-link-water bg-transparent enabled:hover:text-blue-mirage enabled:focus-visible:text-blue-mirage enabled:hover:bg-white-link-water enabled:focus-visible:bg-white-link-water border-white-link-water";
+
+const colorStyles = dark ? darkStyles : lightStyles;
+---
+
+<button disabled={disabled} class={colorStyles
+    + " min-h-[3rem] px-7 py-2 text-15 enabled:motion-safe:transition-colors enabled:motion-safe:ease-in-out disabled:opacity-50 -tracking-12 font-bold border rounded-full "
+    }>
+    <slot />
+</button>

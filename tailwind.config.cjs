@@ -16,6 +16,7 @@ module.exports = {
       },
       white: {
         "link-water": "hsl(220, 60%, 99%)",
+        "pure": "hsl(0, 0%, 100%)"
       },
       red: "hsl(0, 100%, 50%)",
       transparent: "transparent",

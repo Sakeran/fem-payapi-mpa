@@ -1,0 +1,19 @@
+---
+export interface Props {
+    dark?: boolean;
+    href?: string;
+}
+
+const { dark = false, href } = Astro.props;
+
+const lightStyles = "text-blue-sj bg-transparent hover:text-white-pure focus-visible:text-white-pure hover:bg-blue-sj focus-visible:bg-blue-sj border-blue-sj";
+const darkStyles = "text-white-link-water bg-transparent hover:text-blue-mirage focus-visible:text-blue-mirage hover:bg-white-link-water focus-visible:bg-white-link-water border-white-link-water";
+
+const colorStyles = dark ? darkStyles : lightStyles;
+---
+
+<a href={href || "#" } class={colorStyles
+    + "  min-h-[3rem] inline-flex items-center px-7 py-2 text-15 motion-safe:transition-colors motion-safe:ease-in-out -tracking-12 font-bold border rounded-full "
+    }>
+    <slot />
+</a>

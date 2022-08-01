@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import SecondaryButton from "../../components/Buttons/SecondaryButton.astro";
+import SecondaryLink from "../../components/Buttons/SecondaryLink.astro";
+import PrimaryButton from "../../components/Buttons/PrimaryButton.astro";
+import PrimaryLink from "../../components/Buttons/PrimaryLink.astro";
+---
+
+<Layout>
+    <h1 class="px-4">Buttons</h1>
+
+    <section class="space-y-2">
+        <h2>Primary Button</h2>
+
+        <h3>Primary Button, (button element)</h3>
+        <PrimaryButton>Schedule a Demo</PrimaryButton>
+        
+        <h3>Primary Button, (button element, disabled)</h3>
+        <PrimaryButton disabled>Schedule a Demo</PrimaryButton>
+        
+        <h3>Primary Button, (link element)</h3>
+        <PrimaryLink>Schedule a Demo</PrimaryLink>
+    </section>
+    
+    <section class="space-y-2">
+        <h2>Secondary Button</h2>
+        
+        <h3>Secondary Button, (light background, button element)</h3>
+        <SecondaryButton>Submit Query</SecondaryButton>
+        
+        <h3>Secondary Button, (light background, button element, disabled)</h3>
+        <SecondaryButton disabled>Submit Query</SecondaryButton>
+
+        <h3>Secondary Button, (light background, link element)</h3>
+        <SecondaryLink>Submit Query</SecondaryLink>
+        
+        <div class="bg-blue-mirage space-y-2 p-4">
+            <h3 class="text-white-link-water">Secondary Button, (dark background, button element)</h3>
+            <SecondaryButton dark>About Us</SecondaryButton>
+
+            <h3 class="text-white-link-water">Secondary Button, (dark background, button element, disabled)</h3>
+            <SecondaryButton dark disabled>About Us</SecondaryButton>
+            
+            <h3 class="text-white-link-water">Secondary Button, (dark background, link element)</h3>
+            <SecondaryLink dark>About Us</SecondaryLink>
+        </div>
+    </section>
+
+    <hr>
+</Layout>
+
+<style lang="postcss">
+    section {
+        @apply px-4;
+    }
+
+    h1 {
+        @apply text-8;
+    }
+
+    h2 {
+        @apply text-6;
+    }
+</style>
