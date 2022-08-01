@@ -1,0 +1,19 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Logo from "../../components/Logo/Logo.astro";
+---
+
+<Layout>
+    <h1 class="px-4">Logo</h1>
+
+    <section class="p-4 space-y-2">
+        <h2>Light Background</h2>
+        <Logo />
+    </section>
+    
+    <section class="p-4 bg-blue-mirage space-y-2">
+        <h2 class="text-white-link-water">Dark Background</h2>
+        <Logo dark/>
+    </section>
+
+</Layout>
