@@ -1,0 +1,30 @@
+---
+import Facebook from "./Facebook.astro";
+import LinkedIn from "./LinkedIn.astro";
+import Twitter from "./Twitter.astro";
+
+export interface Props {
+    facebookURL?: string;
+    twitterURL?: string;
+    linkedInURL?: string;
+}
+
+const { facebookURL, twitterURL, linkedInURL } = Astro.props as Props;
+---
+
+<div class="flex items-center gap-6">
+    <>
+        { facebookURL &&
+        <Facebook url={facebookURL} />}
+    </>
+
+    <>
+        { twitterURL &&
+        <Twitter url={twitterURL} />}
+    </>
+
+    <>
+        { linkedInURL &&
+        <LinkedIn url={linkedInURL} />}
+    </>
+</div>
