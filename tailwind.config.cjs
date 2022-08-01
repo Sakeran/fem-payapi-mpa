@@ -23,7 +23,7 @@ module.exports = {
 
     fontFamily: {
       sans: ["Public Sans", "sans-serif"],
-      serif: ["DM Serif", "serif"],
+      serif: ["DM Serif Display", "serif"],
     },
     fontSize: {
       "9p": "0.5625rem",
