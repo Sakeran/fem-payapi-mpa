@@ -12,6 +12,7 @@ module.exports = {
         sj: "hsl(207, 33%, 32%)",
         mirage: "hsl(207, 27%, 15%)",
         "light-sj": "hsl(207, 16%, 50%)",
+        bg: "hsl(209, 46%, 95%)"
       },
       white: {
         "link-water": "hsl(220, 60%, 99%)",
