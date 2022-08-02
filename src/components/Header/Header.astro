@@ -4,10 +4,11 @@ import Logo from "../Logo/Logo.astro";
 ---
 
 <header class="relative">
-    <div class=" px-6 pt-10 flex items-center justify-between">
+    <div class="px-6 md:px-10 pt-10 flex items-center justify-between md:justify-start md:gap-16">
         <Logo />
 
-        <button id="menu-open" aria-controls="primary-navigation" aria-expanded="false" id="block menu-open">
+        <button id="menu-open" class="md:hidden" aria-controls="primary-navigation" aria-expanded="false"
+            id="block menu-open">
             <svg width="28" height="17" xmlns="http://www.w3.org/2000/svg">
                 <g fill="#36536B" fill-rule="evenodd">
                     <path d="M0 0h28v3H0zM0 7h28v3H0zM0 14h28v3H0z" />
@@ -16,12 +17,12 @@ import Logo from "../Logo/Logo.astro";
             <span class="sr-only">Open Menu</span>
         </button>
 
-        <nav id="nav" class="fixed inset-0 overflow-x-hidden" data-visible="false">
+        <nav id="nav" class="fixed inset-0 overflow-x-hidden md:static md:flex-grow" data-visible="false">
 
             <!-- SLIDE-OUT -->
-            <div class="slide-out px-6 bg-blue-mirage">
+            <div class="slide-out px-6 md:px-0 bg-blue-mirage md:bg-transparent">
                 <!-- CLOSE BUTTON -->
-                <div class="flex justify-end pb-6 pt-12 border-b border-b-white-link-water/[.15]">
+                <div class="md:hidden flex justify-end pb-6 pt-12 border-b border-b-white-link-water/[.15]">
                     <button id="menu-close" aria-controls="primary-navigation" aria-expanded="false"
                         class="text-white-link-water">
                         <svg width="22" height="23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -34,12 +35,19 @@ import Logo from "../Logo/Logo.astro";
                 </div>
 
                 <!-- PRIMARY NAV -->
-                <ul id="primary-navigation" class="pt-11 flex flex-col gap-8 text-white-link-water items-stretch">
-                    <li class="text-center"><a class="text-5 font-bold" href="/pricing">Pricing</a></li>
-                    <li class="text-center"><a class="text-5 font-bold" href="/about">About</a></li>
-                    <li class="text-center"><a class="text-5 font-bold" href="/contact">Contact</a></li>
+                <ul id="primary-navigation"
+                    class="pt-11 md:pt-0 flex flex-col md:flex-row gap-8 md:gap-10 text-white-link-water md:text-blue-sj/70 items-stretch md:items-center">
+                    <li class="text-center"><a
+                            class="text-5 md:text-15p font-bold md:hover:text-blue-sj/100 md:focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
+                            href="/pricing">Pricing</a></li>
+                    <li class="text-center"><a
+                            class="text-5 md:text-15p font-bold md:hover:text-blue-sj/100 md:focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
+                            href="/about">About</a></li>
+                    <li class="text-center"><a
+                            class="text-5 md:text-15p font-bold md:hover:text-blue-sj/100 md:focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
+                            href="/contact">Contact</a></li>
 
-                    <li>
+                    <li class="ml-auto">
                         <PrimaryLink full href="#">Schedule a Demo</PrimaryLink>
                     </li>
                 </ul>
@@ -52,12 +60,23 @@ import Logo from "../Logo/Logo.astro";
 
 <style>
     header {
-        overflow: hidden;
-        min-height: 62.4vw;
-
         /* Circle position */
-        --circle-top: -147vw;
-        --circle-left: -54vw;
+        --circle-diameter: 208vw;
+
+        --circle-top: calc(var(--circle-diameter) * -0.705);
+        --circle-left: calc((var(--circle-diameter) - 100vw) / -2);
+
+        overflow: hidden;
+        min-height: calc(var(--circle-diameter) * (0.295));
+    }
+
+    @media screen(sm) {
+        header {
+            --circle-diameter: 124vw;
+            --circle-top: calc(var(--circle-diameter) * -0.698);
+
+            min-height: calc(var(--circle-diameter) * (0.301));
+        }
     }
 
     /* Menu */
@@ -87,6 +106,29 @@ import Logo from "../Logo/Logo.astro";
         cursor: pointer;
     }
 
+    @media screen(md) {
+        nav .slide-out {
+            position: static;
+            transform: none;
+
+            width: auto;
+            cursor: auto;
+            overflow: auto;
+
+            transform: none;
+        }
+
+        nav .slide-out::before {
+            content: none;
+        }
+
+        nav[data-visible="false"] {
+            pointer-events: auto;
+        }
+    }
+
+
+
     /* Circles */
     header::before,
     .slide-out::before {
@@ -97,7 +139,7 @@ import Logo from "../Logo/Logo.astro";
         border-radius: 50%;
         opacity: 0.15;
 
-        width: 208vw;
+        width: var(--circle-diameter);
         aspect-ratio: 1;
         background-color: theme("colors.blue.sj");
 
@@ -109,14 +151,14 @@ import Logo from "../Logo/Logo.astro";
         top: var(--circle-top);
         left: var(--circle-left);
     }
-    
+
     nav .slide-out::before {
         top: var(--circle-top);
         left: 0;
         transform: translateX(calc(var(--circle-left) - 100vw));
-        
+
     }
-    
+
     nav[data-visible="true"] .slide-out::before,
     nav:focus-within .slide-out::before {
         transform: translateX(calc(var(--circle-left) - 20vw));
