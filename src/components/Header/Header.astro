@@ -1,0 +1,160 @@
+---
+import PrimaryLink from "../Buttons/PrimaryLink.astro";
+import Logo from "../Logo/Logo.astro";
+---
+
+<header class="relative">
+    <div class=" px-6 pt-10 flex items-center justify-between">
+        <Logo />
+
+        <button id="menu-open" aria-controls="primary-navigation" aria-expanded="false" id="block menu-open">
+            <svg width="28" height="17" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#36536B" fill-rule="evenodd">
+                    <path d="M0 0h28v3H0zM0 7h28v3H0zM0 14h28v3H0z" />
+                </g>
+            </svg>
+            <span class="sr-only">Open Menu</span>
+        </button>
+
+        <nav id="nav" class="fixed inset-0 overflow-x-hidden" data-visible="false">
+
+            <!-- SLIDE-OUT -->
+            <div class="slide-out px-6 bg-blue-mirage">
+                <!-- CLOSE BUTTON -->
+                <div class="flex justify-end pb-6 pt-12 border-b border-b-white-link-water/[.15]">
+                    <button id="menu-close" aria-controls="primary-navigation" aria-expanded="false"
+                        class="text-white-link-water">
+                        <svg width="22" height="23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path
+                                d="M19.839.54L21.96 2.66 13.12 11.5l8.84 8.839-2.121 2.121-8.84-8.84-8.838 8.84L.04 20.34l8.838-8.84L.04 2.662 2.16.54 11 9.378 19.839.54z"
+                                fill="currentColor" fill-rule="evenodd" />
+                        </svg>
+                        <span class="sr-only">Close Menu</span>
+                    </button>
+                </div>
+
+                <!-- PRIMARY NAV -->
+                <ul id="primary-navigation" class="pt-11 flex flex-col gap-8 text-white-link-water items-stretch">
+                    <li class="text-center"><a class="text-5 font-bold" href="/pricing">Pricing</a></li>
+                    <li class="text-center"><a class="text-5 font-bold" href="/about">About</a></li>
+                    <li class="text-center"><a class="text-5 font-bold" href="/contact">Contact</a></li>
+
+                    <li>
+                        <PrimaryLink full href="#">Schedule a Demo</PrimaryLink>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+</header>
+
+<style>
+    header {
+        overflow: hidden;
+        min-height: 62.4vw;
+
+        /* Circle position */
+        --circle-top: -147vw;
+        --circle-left: -54vw;
+    }
+
+    /* Menu */
+
+    nav .slide-out {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+
+        width: 80vw;
+        cursor: default;
+        overflow: hidden;
+
+        transform: translateX(var(--menu-slide));
+    }
+
+    nav[data-visible="false"] {
+        --menu-slide: 100%;
+        pointer-events: none;
+    }
+
+    nav[data-visible="true"],
+    nav:focus-within {
+        --menu-slide: 0%;
+        pointer-events: all;
+        cursor: pointer;
+    }
+
+    /* Circles */
+    header::before,
+    .slide-out::before {
+        content: "";
+        position: absolute;
+
+        display: block;
+        border-radius: 50%;
+        opacity: 0.15;
+
+        width: 208vw;
+        aspect-ratio: 1;
+        background-color: theme("colors.blue.sj");
+
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    header::before {
+        top: var(--circle-top);
+        left: var(--circle-left);
+    }
+    
+    nav .slide-out::before {
+        top: var(--circle-top);
+        left: 0;
+        transform: translateX(calc(var(--circle-left) - 100vw));
+        
+    }
+    
+    nav[data-visible="true"] .slide-out::before,
+    nav:focus-within .slide-out::before {
+        transform: translateX(calc(var(--circle-left) - 20vw));
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+
+        nav .slide-out,
+        nav .slide-out::before {
+            transition: transform .15s ease-in-out;
+        }
+    }
+</style>
+
+<script is:inline>
+    const nav = document.getElementById("nav");
+    const openButton = document.getElementById("menu-open")
+    const closeButton = document.getElementById("menu-close")
+
+    function openMenu() {
+        nav.dataset.visible = true;
+        openButton.setAttribute("aria-expanded", "true");
+        closeButton.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMenu() {
+        nav.dataset.visible = false;
+        openButton.setAttribute("aria-expanded", "false");
+        closeButton.setAttribute("aria-expanded", "false");
+
+        if (nav.contains(document.activeElement)) {
+            openButton.focus();
+        }
+    }
+
+    nav.addEventListener("click", (e) => e.target === nav && closeMenu());
+
+    openButton.addEventListener('click', openMenu);
+
+    closeButton.addEventListener('click', closeMenu);
+</script>
