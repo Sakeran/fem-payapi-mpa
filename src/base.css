@@ -17,6 +17,15 @@
   }
 }
 
+@media screen(lg) {
+  :root {
+    --circle-diameter: clamp(0px, 54vw, 60rem);
+
+    --circle-top: calc(var(--circle-diameter) * -0.22);
+    --circle-left: 56vw;
+  }
+}
+
 body {
   @apply bg-blue-bg;
 }

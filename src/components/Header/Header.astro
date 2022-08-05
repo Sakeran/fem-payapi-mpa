@@ -9,7 +9,7 @@ import MobileNav from "./MobileNav.astro";
 
 <div class="bg-circle"></div>
 
-<header class="px-6 md:px-10 pt-10 flex items-center justify-start gap-16 max-w-[69.375rem] mx-auto">
+<header class="box-content px-6 md:px-10 pt-10 flex items-center justify-start gap-16 max-w-[69.375rem] mx-auto">
     <Logo />
 
     <nav class="hidden md:block overflow-x-hidden flex-grow z-20">
@@ -49,6 +49,12 @@ import MobileNav from "./MobileNav.astro";
     @media screen(sm) {
         .bg-circle {
             min-height: calc(var(--circle-diameter) * (0.301));
+        }
+    }
+    
+    @media screen(lg) {
+        .bg-circle {
+            min-height: calc(var(--circle-diameter) * (0.78));
         }
     }
 
