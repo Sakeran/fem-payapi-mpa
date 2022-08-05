@@ -1,0 +1,181 @@
+---
+import PrimaryLink from "../Buttons/PrimaryLink.astro";
+---
+
+<!-- Mobile Navigation -->
+
+<div class="fixed w-screen pr-3 flex justify-end top-7 z-10 md:hidden">
+    <button id="menu-open" class="p-3 aspect-square" aria-controls="primary-navigation" aria-expanded="false"
+        id="block menu-open">
+        <svg width="28" height="17" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#36536B" fill-rule="evenodd">
+                <path d="M0 0h28v3H0zM0 7h28v3H0zM0 14h28v3H0z" />
+            </g>
+        </svg>
+        <span class="sr-only">Open Menu</span>
+    </button>
+</div>
+
+<nav id="mobile-nav" class="mobile-nav w-full overflow-x-hidden z-20 md:hidden" data-visible="false">
+
+    <!-- MENU SCRIM -->
+
+    <div class="mobile-nav-scrim fixed w-full top-0 left-0 bottom-0"></div>
+
+    <!-- MENU BACKGROUND -->
+
+    <div class="slide-out-bg bg-blue-mirage hiddden">
+    </div>
+
+    <!-- MENU CIRCLE -->
+    <div class="slide-out-circle"></div>
+
+    <!-- MENU CONTENT -->
+    <div class="slide-out-content px-6">
+        <!-- CLOSE BUTTON -->
+        <div class="flex justify-end pb-6 pt-12 border-b border-b-white-link-water/[.15]">
+            <button id="menu-close" aria-controls="primary-navigation" aria-expanded="false"
+                class="text-white-link-water">
+                <svg width="22" height="23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path
+                        d="M19.839.54L21.96 2.66 13.12 11.5l8.84 8.839-2.121 2.121-8.84-8.84-8.838 8.84L.04 20.34l8.838-8.84L.04 2.662 2.16.54 11 9.378 19.839.54z"
+                        fill="currentColor" fill-rule="evenodd" />
+                </svg>
+                <span class="sr-only">Close Menu</span>
+            </button>
+        </div>
+
+        <!-- NAV -->
+        <ul id="primary-navigation" class="pt-11 flex flex-col gap-8 text-white-link-water" data-visible="false">
+            <li class="text-center"><a class="text-5 font-bold leading-none" href="/pricing">Pricing</a></li>
+            <li class="text-center"><a class="text-5 font-bold leading-none" href="/about">About</a></li>
+            <li class="text-center"><a class="text-5 font-bold leading-none" href="/contact">Contact</a></li>
+
+            <li>
+                <PrimaryLink full href="#">Schedule a Demo</PrimaryLink>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<style>
+    .mobile-nav-scrim {
+        z-index: 20;
+        pointer-events: none;
+    }
+
+    .slide-out-bg,
+    .slide-out-content {
+        width: 80vw;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+    }
+
+    .slide-out-bg {
+        z-index: 21;
+
+    }
+
+    .slide-out-content {
+        z-index: 23;
+
+    }
+
+    .slide-out-circle {
+        min-height: calc(var(--circle-diameter) * (0.295));
+
+        width: 100%;
+
+        pointer-events: none;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+
+        overflow-x: hidden;
+        z-index: 22;
+    }
+
+    .slide-out-circle::before {
+        content: "";
+
+        display: block;
+        border-radius: 50%;
+
+        position: absolute;
+        top: var(--circle-top);
+        left: var(--circle-left);
+        z-index: 22;
+
+        width: var(--circle-diameter);
+        aspect-ratio: 1;
+        background-color: theme('colors.blue.sj');
+        opacity: 0.15;
+    }
+
+    @media screen(sm) {
+        .slide-out-circle {
+            min-height: calc(var(--circle-diameter) * (0.301));
+        }
+    }
+
+    .slide-out-bg,
+    .slide-out-content {
+        transform: translateX(100%);
+    }
+
+    nav[data-visible="true"] .slide-out-bg,
+    nav[data-visible="true"] .slide-out-content,
+    nav:focus-within .slide-out-bg,
+    nav:focus-within .slide-out-content {
+        transform: translateX(0%);
+    }
+
+    nav[data-visible="true"] .mobile-nav-scrim {
+        pointer-events: all;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+
+        .slide-out-bg,
+        .slide-out-content {
+            transition: transform .15s ease-in-out;
+        }
+    }
+</style>
+
+<script>
+    const nav = document.getElementById("mobile-nav");
+    const scrim = nav.querySelector(".mobile-nav-scrim");
+    const slideOutContent = nav.querySelector(".slide-out-content");
+
+    const openButton = document.getElementById("menu-open");
+    const closeButton = document.getElementById("menu-close");
+
+    function closeMenu() {
+        nav.dataset.visible = "false";
+        openButton.setAttribute('aria-expanded', "false");
+        closeButton.setAttribute('aria-expanded', "false");
+
+        if (slideOutContent.contains(document.activeElement)) {
+            openButton.focus();
+        }
+    }
+
+    function openMenu() {
+        nav.dataset.visible = "true";
+        openButton.setAttribute('aria-expanded', "true");
+        closeButton.setAttribute('aria-expanded', "true");
+    }
+
+    openButton.addEventListener('click', openMenu);
+    closeButton.addEventListener('click', closeMenu);
+    scrim.addEventListener('click', closeMenu);
+</script>

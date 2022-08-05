@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* BG Circle Position */
+  --circle-diameter: 208vw;
+
+  --circle-top: calc(var(--circle-diameter) * -0.705);
+  --circle-left: calc((var(--circle-diameter) - 100vw) / -2);
+}
+
+@media screen(sm) {
+  :root {
+    --circle-diameter: 124vw;
+    --circle-top: calc(var(--circle-diameter) * -0.698);
+  }
+}
+
 body {
   @apply bg-blue-bg;
 }

@@ -1,202 +1,72 @@
 ---
 import PrimaryLink from "../Buttons/PrimaryLink.astro";
 import Logo from "../Logo/Logo.astro";
+
+import MobileNav from "./MobileNav.astro";
 ---
 
-<header class="relative">
-    <div class="px-6 md:px-10 pt-10 flex items-center justify-between md:justify-start md:gap-16">
-        <Logo />
+<!-- Main / Desktop Header -->
 
-        <button id="menu-open" class="md:hidden" aria-controls="primary-navigation" aria-expanded="false"
-            id="block menu-open">
-            <svg width="28" height="17" xmlns="http://www.w3.org/2000/svg">
-                <g fill="#36536B" fill-rule="evenodd">
-                    <path d="M0 0h28v3H0zM0 7h28v3H0zM0 14h28v3H0z" />
-                </g>
-            </svg>
-            <span class="sr-only">Open Menu</span>
-        </button>
+<header class="px-6 md:px-10 pt-10 flex items-center justify-start gap-16 max-w-[69.375rem] mx-auto">
+    <Logo />
 
-        <nav id="nav" class="fixed inset-0 overflow-x-hidden md:static md:flex-grow" data-visible="false">
+    <nav class="hidden md:block overflow-x-hidden flex-grow z-20">
+        <ul class="flex flex-row gap-10 text-blue-sj/70 items-center">
+            <li class="text-center"><a
+                    class="text-15p font-bold hover:text-blue-sj/100 focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
+                    href="/pricing">Pricing</a></li>
+            <li class="text-center"><a
+                    class="text-15p font-bold hover:text-blue-sj/100 focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
+                    href="/about">About</a></li>
+            <li class="text-center"><a
+                    class="text-15p font-bold hover:text-blue-sj/100 focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
+                    href="/contact">Contact</a></li>
 
-            <!-- SLIDE-OUT -->
-            <div class="slide-out px-6 md:px-0 bg-blue-mirage md:bg-transparent">
-                <!-- CLOSE BUTTON -->
-                <div class="md:hidden flex justify-end pb-6 pt-12 border-b border-b-white-link-water/[.15]">
-                    <button id="menu-close" aria-controls="primary-navigation" aria-expanded="false"
-                        class="text-white-link-water">
-                        <svg width="22" height="23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path
-                                d="M19.839.54L21.96 2.66 13.12 11.5l8.84 8.839-2.121 2.121-8.84-8.84-8.838 8.84L.04 20.34l8.838-8.84L.04 2.662 2.16.54 11 9.378 19.839.54z"
-                                fill="currentColor" fill-rule="evenodd" />
-                        </svg>
-                        <span class="sr-only">Close Menu</span>
-                    </button>
-                </div>
-
-                <!-- PRIMARY NAV -->
-                <ul id="primary-navigation"
-                    class="pt-11 md:pt-0 flex flex-col md:flex-row gap-8 md:gap-10 text-white-link-water md:text-blue-sj/70 items-stretch md:items-center">
-                    <li class="text-center"><a
-                            class="text-5 md:text-15p font-bold md:hover:text-blue-sj/100 md:focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
-                            href="/pricing">Pricing</a></li>
-                    <li class="text-center"><a
-                            class="text-5 md:text-15p font-bold md:hover:text-blue-sj/100 md:focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
-                            href="/about">About</a></li>
-                    <li class="text-center"><a
-                            class="text-5 md:text-15p font-bold md:hover:text-blue-sj/100 md:focus-visible:text-blue-sj/100 motion-safe:transition-opacity"
-                            href="/contact">Contact</a></li>
-
-                    <li class="ml-auto">
-                        <PrimaryLink full href="#">Schedule a Demo</PrimaryLink>
-                    </li>
-                </ul>
-            </div>
-
-        </nav>
-    </div>
-
+            <li class="ml-auto">
+                <PrimaryLink href="#">Schedule a Demo</PrimaryLink>
+            </li>
+        </ul>
+    </nav>
 </header>
 
-<style>
-    header {
-        /* Circle position */
-        --circle-diameter: 208vw;
+<MobileNav />
 
-        --circle-top: calc(var(--circle-diameter) * -0.705);
-        --circle-left: calc((var(--circle-diameter) - 100vw) / -2);
 
-        overflow: hidden;
+
+<style lang="postcss">
+    .bg-circle {
         min-height: calc(var(--circle-diameter) * (0.295));
     }
 
-    @media screen(sm) {
-        header {
-            --circle-diameter: 124vw;
-            --circle-top: calc(var(--circle-diameter) * -0.698);
+    .bg-circle {
+        position: absolute;
+        left: 0;
+        top: 0;
 
+        width: 100vw;
+        z-index: -10;
+
+    }
+
+    @media screen(sm) {
+        .bg-circle {
             min-height: calc(var(--circle-diameter) * (0.301));
         }
     }
 
-    /* Menu */
-
-    nav .slide-out {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-
-        width: 80vw;
-        cursor: default;
-        overflow: hidden;
-
-        transform: translateX(var(--menu-slide));
-    }
-
-    nav[data-visible="false"] {
-        --menu-slide: 100%;
-        pointer-events: none;
-    }
-
-    nav[data-visible="true"],
-    nav:focus-within {
-        --menu-slide: 0%;
-        pointer-events: all;
-        cursor: pointer;
-    }
-
-    @media screen(md) {
-        nav .slide-out {
-            position: static;
-            transform: none;
-
-            width: auto;
-            cursor: auto;
-            overflow: auto;
-
-            transform: none;
-        }
-
-        nav .slide-out::before {
-            content: none;
-        }
-
-        nav[data-visible="false"] {
-            pointer-events: auto;
-        }
-    }
-
-
-
-    /* Circles */
-    header::before,
-    .slide-out::before {
+    .bg-circle::before {
         content: "";
-        position: absolute;
 
         display: block;
         border-radius: 50%;
-        opacity: 0.15;
+
+        position: absolute;
+        top: var(--circle-top);
+        left: var(--circle-left);
 
         width: var(--circle-diameter);
         aspect-ratio: 1;
-        background-color: theme("colors.blue.sj");
-
-        z-index: -1;
-        pointer-events: none;
-    }
-
-    header::before {
-        top: var(--circle-top);
-        left: var(--circle-left);
-    }
-
-    nav .slide-out::before {
-        top: var(--circle-top);
-        left: 0;
-        transform: translateX(calc(var(--circle-left) - 100vw));
-
-    }
-
-    nav[data-visible="true"] .slide-out::before,
-    nav:focus-within .slide-out::before {
-        transform: translateX(calc(var(--circle-left) - 20vw));
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-
-        nav .slide-out,
-        nav .slide-out::before {
-            transition: transform .15s ease-in-out;
-        }
+        background-color: theme('colors.blue.sj');
+        opacity: 0.15;
     }
 </style>
-
-<script is:inline>
-    const nav = document.getElementById("nav");
-    const openButton = document.getElementById("menu-open")
-    const closeButton = document.getElementById("menu-close")
-
-    function openMenu() {
-        nav.dataset.visible = true;
-        openButton.setAttribute("aria-expanded", "true");
-        closeButton.setAttribute("aria-expanded", "true");
-    }
-
-    function closeMenu() {
-        nav.dataset.visible = false;
-        openButton.setAttribute("aria-expanded", "false");
-        closeButton.setAttribute("aria-expanded", "false");
-
-        if (nav.contains(document.activeElement)) {
-            openButton.focus();
-        }
-    }
-
-    nav.addEventListener("click", (e) => e.target === nav && closeMenu());
-
-    openButton.addEventListener('click', openMenu);
-
-    closeButton.addEventListener('click', closeMenu);
-</script>
