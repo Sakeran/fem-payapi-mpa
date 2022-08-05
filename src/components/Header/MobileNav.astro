@@ -101,6 +101,12 @@ import PrimaryLink from "../Buttons/PrimaryLink.astro";
 
         overflow-x: hidden;
         z-index: 22;
+
+        clip-path: inset(0 0 0 100vw);
+    }
+
+    nav[data-visible="true"] .slide-out-circle {
+        clip-path: inset(0 0 0 20vw);
     }
 
     .slide-out-circle::before {
@@ -147,6 +153,10 @@ import PrimaryLink from "../Buttons/PrimaryLink.astro";
         .slide-out-bg,
         .slide-out-content {
             transition: transform .15s ease-in-out;
+        }
+
+        .slide-out-circle {
+            transition: clip-path .15s ease-in-out;
         }
     }
 </style>
