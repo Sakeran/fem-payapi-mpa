@@ -45,19 +45,7 @@ import MobileNav from "./MobileNav.astro";
         overflow-x: hidden;
         z-index: -10;
 
-        min-height: calc(var(--circle-diameter) * (0.295));
-    }
-
-    @media screen(sm) {
-        .bg-circle {
-            min-height: calc(var(--circle-diameter) * (0.301));
-        }
-    }
-
-    @media screen(lg) {
-        .bg-circle {
-            min-height: calc(var(--circle-diameter) * (0.78));
-        }
+        pointer-events: none;
     }
 
     .bg-circle::before {
@@ -66,7 +54,7 @@ import MobileNav from "./MobileNav.astro";
         display: block;
         border-radius: 50%;
 
-        position: absolute;
+        position: relative;
         top: var(--circle-top);
         left: var(--circle-left);
 

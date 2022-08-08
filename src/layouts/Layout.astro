@@ -4,9 +4,10 @@ import "../base.css";
 
 export interface Props {
 	title?: string;
+	pageClass?: string;
 }
 
-const { title } = Astro.props as Props;
+const { title, pageClass } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ const { title } = Astro.props as Props;
 	<title>{title ? title + " - " : ""}Frontend Mentor | PayAPI Website Challenge</title>
 </head>
 
-<body class="overflow-x-hidden">
+<body class={"overflow-x-hidden " + pageClass}>
 	<slot />
 </body>
 

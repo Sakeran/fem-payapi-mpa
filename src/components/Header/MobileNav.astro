@@ -87,8 +87,6 @@ import PrimaryLink from "../Buttons/PrimaryLink.astro";
     }
 
     .slide-out-circle {
-        min-height: calc(var(--circle-diameter) * (0.295));
-
         width: 100%;
 
         pointer-events: none;
@@ -115,7 +113,7 @@ import PrimaryLink from "../Buttons/PrimaryLink.astro";
         display: block;
         border-radius: 50%;
 
-        position: absolute;
+        position: relative;
         top: var(--circle-top);
         left: var(--circle-left);
         z-index: 22;
@@ -124,12 +122,6 @@ import PrimaryLink from "../Buttons/PrimaryLink.astro";
         aspect-ratio: 1;
         background-color: theme('colors.blue.sj');
         opacity: 0.15;
-    }
-
-    @media screen(sm) {
-        .slide-out-circle {
-            min-height: calc(var(--circle-diameter) * (0.301));
-        }
     }
 
     .slide-out-bg,
