@@ -154,30 +154,39 @@ import PrimaryLink from "../Buttons/PrimaryLink.astro";
 </style>
 
 <script>
-    const nav = document.getElementById("mobile-nav");
-    const scrim = nav.querySelector(".mobile-nav-scrim");
-    const slideOutContent = nav.querySelector(".slide-out-content");
+    function setupNav() {
+        const nav = document.getElementById("mobile-nav");
+        if (!nav) return;
 
-    const openButton = document.getElementById("menu-open");
-    const closeButton = document.getElementById("menu-close");
+        const scrim = nav.querySelector(".mobile-nav-scrim");
+        const slideOutContent = nav.querySelector(".slide-out-content");
 
-    function closeMenu() {
-        nav.dataset.visible = "false";
-        openButton.setAttribute('aria-expanded', "false");
-        closeButton.setAttribute('aria-expanded', "false");
+        const openButton = document.getElementById("menu-open");
+        const closeButton = document.getElementById("menu-close");
 
-        if (slideOutContent.contains(document.activeElement)) {
-            openButton.focus();
+        if (!scrim || !slideOutContent || !openButton || !closeButton) return;
+
+        function closeMenu() {
+            nav.dataset.visible = "false";
+            openButton.setAttribute('aria-expanded', "false");
+            closeButton.setAttribute('aria-expanded', "false");
+
+            if (slideOutContent.contains(document.activeElement)) {
+                openButton.focus();
+            }
         }
+
+        function openMenu() {
+            nav.dataset.visible = "true";
+            openButton.setAttribute('aria-expanded', "true");
+            closeButton.setAttribute('aria-expanded', "true");
+        }
+
+        openButton.addEventListener('click', openMenu);
+        closeButton.addEventListener('click', closeMenu);
+        scrim.addEventListener('click', closeMenu);
     }
 
-    function openMenu() {
-        nav.dataset.visible = "true";
-        openButton.setAttribute('aria-expanded', "true");
-        closeButton.setAttribute('aria-expanded', "true");
-    }
+    setupNav();
 
-    openButton.addEventListener('click', openMenu);
-    closeButton.addEventListener('click', closeMenu);
-    scrim.addEventListener('click', closeMenu);
 </script>
