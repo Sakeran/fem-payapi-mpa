@@ -2,57 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Header Circle (General) */
-  --circle-diameter: 208vw;
-  --circle-top-offset: 0.83;
 
-  --circle-top: calc(var(--circle-diameter) * -1 * var(--circle-top-offset));
-  --circle-left: 20vw;
-}
-
-@media screen(sm) {
-  :root {
-    --circle-diameter: 102vw;
-    --circle-top-offset: 0.59;
-    --circle-left: 66vw;
-  }
-}
-
-@media screen(lg) {
-  :root {
-    --circle-diameter: clamp(0px, 54vw, 60rem);
-    --circle-top-offset: 0.73;
-    
-    --circle-left: 56vw;
-  }
-}
-
-body.index {
-  /* Header Circle (Index Page) */
-  --circle-diameter: 208vw;
-
-  --circle-top-offset: 0.705;
-  --circle-top: calc(var(--circle-diameter) * -1 * var(--circle-top-offset));
-  
-  --circle-left: calc((var(--circle-diameter) - 100vw) / -2);
-}
-
-@media screen(sm) {
-  body.index {
-    --circle-diameter: 124vw;
-    --circle-top-offset: 0.698;
-  }
-}
-
-@media screen(lg) {
-  body.index {
-    --circle-diameter: clamp(0px, 54vw, 60rem);
-    --circle-top-offset: 0.22;
-
-    --circle-left: 56vw;
-  }
-}
 
 body {
   @apply bg-blue-bg;
