@@ -1,0 +1,61 @@
+---
+import Logo from "../Logo/Logo.astro";
+import SocialMediaLinks from "../SocialMediaLinks/SocialMediaLinks.astro";
+---
+
+<div class="relative footer-container bg-blue-mirage overflow-hidden">
+    <footer
+        class="max-w-[69.375rem] mx-auto box-content text-white-link-water pt-12 pb-14 md:py-8 md:px-10 flex flex-col md:flex-row items-center overflow-hidden">
+        <a href="/">
+            <Logo dark></Logo>
+        </a>
+
+        <nav class="my-10 md:my-0 md:mr-auto md:ml-16">
+            <ul
+                class="flex flex-col md:flex-row items-center gap-8 md:gap-10 text-white-link-water/70 font-bold text-15p leading-none">
+                <li><a class="hover:text-white-link-water/100 focus-visible:text-white-link-water/100 motion-safe:transition-colors"
+                        href="/pricing">Pricing</a>
+                </li>
+                <li><a class="hover:text-white-link-water/100 focus-visible:text-white-link-water/100 motion-safe:transition-colors"
+                        href="/about">About</a></li>
+                <li><a class="hover:text-white-link-water/100 focus-visible:text-white-link-water/100 motion-safe:transition-colors"
+                        href="/contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <SocialMediaLinks twitterURL="#" facebookURL="#" linkedInURL="#" />
+    </footer>
+
+</div>
+
+<style lang="postcss">
+    .footer-container::after {
+        content: "";
+
+        position: absolute;
+        left: -54vw;
+        top: calc(100% - min(46.5vw, 12rem));
+
+        display: block;
+        width: 208vw;
+        aspect-ratio: 1;
+
+        border-radius: 50%;
+
+
+        background-color: theme("colors.blue.sj");
+        opacity: 0.15;
+        z-index: 0;
+
+        pointer-events: none;
+    }
+
+    @media screen(md) {
+        .footer-container::after {
+            width: 48.75rem;
+            top: -8.5rem;
+            left: calc(100% - 24.375rem);
+        }
+    }
+</style>

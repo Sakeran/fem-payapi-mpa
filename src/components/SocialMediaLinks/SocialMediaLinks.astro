@@ -12,19 +12,19 @@ export interface Props {
 const { facebookURL, twitterURL, linkedInURL } = Astro.props as Props;
 ---
 
-<div class="flex items-center gap-6">
-    <>
+<ul class="flex items-center gap-6 p-0">
+    <li>
         { facebookURL &&
         <Facebook url={facebookURL} />}
-    </>
+    </li>
 
-    <>
+    <li>
         { twitterURL &&
         <Twitter url={twitterURL} />}
-    </>
+    </li>
 
-    <>
+    <li>
         { linkedInURL &&
         <LinkedIn url={linkedInURL} />}
-    </>
-</div>
+    </li>
+</ul>
