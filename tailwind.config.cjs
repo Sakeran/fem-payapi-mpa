@@ -60,13 +60,17 @@ module.exports = {
       lineHeight: {
         body: "1.866",
         card: "1.666",
-        h2: "1.166rem",
+        h2: "1.166",
         h3: {
-          big: "1.25rem",
-          sm: "1.388rem",
+          big: "1.25",
+          sm: "1.388",
         },
         h4: "1.333rem",
       },
+
+      screens: {
+        container: "69.375em"
+      }
     },
   },
   plugins: [],

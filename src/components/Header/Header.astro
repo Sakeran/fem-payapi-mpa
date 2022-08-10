@@ -62,7 +62,7 @@ import MobileNav from "./MobileNav.astro";
         }
     }
 
-    body.index {
+    :global(body.index) {
         /* Header Circle (Index Page) */
         --circle-diameter: 208vw;
 
@@ -73,14 +73,14 @@ import MobileNav from "./MobileNav.astro";
     }
 
     @media screen(sm) {
-        body.index {
+        :global(body.index) {
             --circle-diameter: 124vw;
             --circle-top-offset: 0.698;
         }
     }
 
     @media screen(lg) {
-        body.index {
+        :global(body.index) {
             --circle-diameter: clamp(0px, 54vw, 60rem);
             --circle-top-offset: 0.22;
 

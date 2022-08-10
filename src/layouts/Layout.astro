@@ -28,7 +28,7 @@ const { title, pageClass } = Astro.props as Props;
 	<title>{title ? title + " - " : ""}Frontend Mentor | PayAPI Website Challenge</title>
 </head>
 
-<body class={"overflow-x-hidden" + (pageClass ? pageClass + " " : "" )}>
+<body class={"overflow-x-hidden" + (pageClass ? " " + pageClass : "" )}>
 	<slot />
 </body>
 
