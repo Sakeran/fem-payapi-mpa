@@ -6,7 +6,7 @@ export interface Props {
 
 const { disabled = false, full } = Astro.props;
 
-const colorStyles = "text-white-link-water bg-pink-dark hover:bg-pink-charm focus-visible:bg-pink-charm";
+const colorStyles = "text-white-link-water bg-pink-dark hover:bg-pink-charm focus-visible:bg-pink-charm focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink-dark focus-visible:outline-offset-2";
 
 let styles = full ? "w-full " + colorStyles : colorStyles;
 ---
