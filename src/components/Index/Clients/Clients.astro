@@ -1,0 +1,70 @@
+---
+import SecondaryLink from "../../Buttons/SecondaryLink.astro";
+import LogoGrid from "../../LogoGrid/LogoGrid.astro";
+
+---
+
+<div class="bg-circle relative overflow-hidden bg-blue-mirage text-white-link-water py-20 md:py-22 lg:py-25">
+    <div class="box-content max-w-screen-container px-6 mx-auto flex flex-col lg:flex-row gap-14 sm:gap-16 lg:gap-0 lg:items-center">
+        <div class="lg:basis-full">
+            <h2
+                class="text-8 md:text-12 text-center lg:text-start leading-[1.125] md:leading-h2 -tracking-25 md:-tracking-37">
+                Who we work with</h2>
+            <p
+                class="mt-4 md:mt-5 mx-auto lg:mx-0 text-center lg:text-start leading-body opacity-70 text-15p max-w-[50ch]">
+                Today, millions of people
+                around the world have successfully connected their accounts to apps they love
+                using our API. We provide developers with the tools they need to create easy and accessible experiences
+                for their users. </p>
+            <div class="mt-5 md:mt-8 flex justify-center lg:justify-start">
+                <SecondaryLink dark href="/about">About Us</SecondaryLink>
+            </div>
+        </div>
+        <div class="flex justify-center order-first lg:order-none lg:basis-full">
+            <LogoGrid />
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-circle>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .bg-circle::before {
+        content: "";
+
+        --circle-width: min(48.75rem, 208vw);
+
+        background-color: theme("colors.blue.sj");
+        opacity: 0.15;
+
+        width: var(--circle-width);
+        aspect-ratio: 1;
+        border-radius: 50%;
+
+        position: absolute;
+        top: calc(var(--circle-width) * -0.77);
+        left: 50%;
+        transform: translateX(-50%);
+
+        pointer-events: none;
+
+        z-index: 0;
+    }
+
+    @media screen(sm) {
+        .bg-circle::before {
+            top: calc(var(--circle-width) * -0.703);
+        }
+    }
+
+    @media screen(lg) {
+        .bg-circle::before {
+            top: calc(var(--circle-width) * -0.46);
+            left: calc(var(--circle-width) * -0.30);
+            transform: none;
+        }
+    }
+</style>

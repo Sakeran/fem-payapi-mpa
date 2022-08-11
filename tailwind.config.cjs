@@ -12,11 +12,11 @@ module.exports = {
         sj: "hsl(207, 33%, 32%)",
         mirage: "hsl(207, 27%, 15%)",
         "light-sj": "hsl(207, 16%, 50%)",
-        bg: "hsl(209, 46%, 95%)"
+        bg: "hsl(209, 46%, 95%)",
       },
       white: {
         "link-water": "hsl(220, 60%, 99%)",
-        "pure": "hsl(0, 0%, 100%)"
+        pure: "hsl(0, 0%, 100%)",
       },
       red: "hsl(0, 100%, 50%)",
       transparent: "transparent",
@@ -69,8 +69,13 @@ module.exports = {
       },
 
       screens: {
-        container: "69.375em"
-      }
+        container: "69.375em",
+      },
+
+      spacing: {
+        22: "5.5rem",
+        25: "6.25rem",
+      },
     },
   },
   plugins: [],
