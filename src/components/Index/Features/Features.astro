@@ -1,0 +1,75 @@
+---
+import FeatureCard from "./FeatureCard.astro";
+import EasyToImplement from "./illustrations/EasyToImplement.astro";
+import SimpleUI from "./illustrations/SimpleUI.astro";
+
+---
+
+<section class="bg-circle relative overflow-hidden py-20 sm:py-25 lg:py-40 min-h-screen">
+
+    <div class="box-content max-w-screen-container px-6 mx-auto">
+
+        <div class="flex flex-col items-center lg:flex-row">
+            <div class="mt-12 lg:basis-1/2 lg:ml-auto">
+                <h2
+                    class="text-blue-sj text-9 md:text-12 text-center lg:text-start leading-none md:leading-h2 -tracking-25 md:-tracking-37">
+                    Easy to implement</h2>
+                <p class="mt-5 max-w-[65ch] lg:max-w-[48ch] text-blue-light-sj text-15p text-center lg:text-start">Our
+                    API comes with just a few
+                    lines of code. You’ll be up and running in no time. We built our
+                    documentation page to integrate payments functionality with ease.</p>
+            </div>
+            <div class="order-first max-w-[45ch] lg:max-w-none lg:basis-5/12">
+                <EasyToImplement />
+            </div>
+        </div>
+
+        <div class="mt-20 md:mt-25 lg:mt-35 flex flex-col items-center lg:flex-row">
+            <div class="mt-12 lg:basis-1/2 lg:mr-auto">
+                <h2
+                    class="text-blue-sj text-9 md:text-12 text-center lg:text-start leading-none md:leading-h2 -tracking-25 md:-tracking-37">
+                    Simple UI & UX</h2>
+                <p class="mt-5 max-w-[65ch] lg:max-w-[48ch] text-blue-light-sj text-15p text-center lg:text-start">Our
+                    pre-built form is easy to
+                    integrate in your app or website’s checkout flow and designed to
+                    optimize conversion. </p>
+            </div>
+            <div class="order-first max-w-[45ch] lg:max-w-none lg:basis-6/12 lg:order-none">
+                <SimpleUI />
+            </div>
+        </div>
+
+        <div
+            class="mt-20 md:mt-25 lg:mt-35 flex flex-col md:flex-row gap-12 md:gap-[0.625rem] lg:gap-[1.875rem] items-center md:items-start ">
+            <h2 class="sr-only">Features</h2>
+            <FeatureCard title="Personal Finances" icon={"finance"}
+                text="Consolidate financial data from multiple sources and categorize transactions up to 2 years of history. Analyze reports to reconcile activities in your account. " />
+            <FeatureCard title="Banking & Coverage" icon={"banking"}
+                text="With our platform, you can speed up account onboarding and support ongoing payments for checking, savings, credit card, and brokerage accounts." />
+            <FeatureCard title="Consumer Payments" icon={"payments"}
+                text="It’s easier to set up secure bank payments with us through a flow designed with the user experience in mind. Customers could instantly authenticate their account." />
+        </div>
+
+    </div>
+
+</section>
+
+<style lang="postcss">
+    @media screen(lg) {
+        .bg-circle::before {
+            content: "";
+
+            width: 48.75rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: theme("colors.blue.sj");
+            opacity: 0.15;
+
+            position: absolute;
+            top: 50%;
+            right: 0;
+
+            transform: translate(50%, -50%);
+        }
+    }
+</style>

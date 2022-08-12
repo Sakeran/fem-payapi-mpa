@@ -61,10 +61,8 @@ module.exports = {
         body: "1.866",
         card: "1.666",
         h2: "1.166",
-        h3: {
-          big: "1.25",
-          sm: "1.388",
-        },
+        "h3-big": 1.25,
+        "h3-small": 1.388,
         h4: "1.333rem",
       },
 
@@ -75,6 +73,7 @@ module.exports = {
       spacing: {
         22: "5.5rem",
         25: "6.25rem",
+        35: "8.75rem",
       },
     },
   },
