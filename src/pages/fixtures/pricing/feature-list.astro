@@ -1,0 +1,25 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import FeatureList from "../../../components/Pricing/FeatureList/FeatureList.astro";
+
+
+const items = ["Transactions", "Auth", "Identity", "Investments", "Assets", "Liabilities", "Income"];
+
+---
+
+<Layout>
+    <div class="pl-4">
+        <h2 class="mb-4">Included</h2>
+        <FeatureList tierName="Free" items={items.slice(0, 3)} />
+
+        <h2 class="my-4">Not Included</h2>
+        <FeatureList tierName="Free" included={false} items={items.slice(3)} />
+
+        <h2 class="my-4">Both</h2>
+        <div class="space-y-2">
+            <FeatureList tierName="Free" items={items.slice(0, 3)} />
+            <FeatureList tierName="Free" included={false} items={items.slice(3)} />
+        </div>
+    </div>
+
+</Layout>

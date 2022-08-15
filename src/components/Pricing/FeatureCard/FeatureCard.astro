@@ -1,0 +1,36 @@
+---
+import SecondaryLink from "../../Buttons/SecondaryLink.astro";
+import FeatureList from "../FeatureList/FeatureList.astro";
+
+export interface Props {
+    title: string;
+    desc: string;
+    price: string;
+    included: string[];
+    notIncluded: string[];
+}
+
+
+const { title, desc, price, included, notIncluded } = Astro.props as Props;
+---
+
+<div class="flex flex-col items-center lg:items-start">
+    <h2
+        class="text-pink-dark leading-h4 md:leading-card lg:leading-h3-big text-6 lg:text-8 -tracking-18 text-center lg:text-start">
+        {title}</h2>
+    <p class="mt-4 text-15p text-blue-light-sj text-center lg:text-start">{desc}</p>
+
+    <p
+        class="mt-2 font-serif text-blue-sj text-center lg:text-start text-14 md:text-12 lg:text-14 -tracking-43 md:-tracking-37 lg:-tracking-43 leading-[1.29] md:leading-[1.5] lg:leading-[1.29]">
+        {price}</p>
+
+    <div class="my-6 py-6 self-stretch flex flex-col border-blue-sj/25 border-t border-b">
+        <div class="w-max mx-auto lg:mx-0">
+            <FeatureList tierName={title} included={true} items={included} />
+            <FeatureList tierName={title} included={false} items={notIncluded} />
+
+        </div>
+    </div>
+
+    <SecondaryLink href="/contact">Request Access</SecondaryLink>
+</div>

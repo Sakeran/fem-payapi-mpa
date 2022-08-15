@@ -1,0 +1,29 @@
+---
+import Checkmark from "../icons/Checkmark.astro";
+
+export interface Props {
+    tierName: string;
+    included?: boolean;
+    items: string[];
+}
+
+const { included = true, items, tierName } = Astro.props as Props;
+
+const title = (included ? "Included" : "Not included") + " in " + tierName;
+const id = "feature-list-title-" + (Math.random().toString().slice(3));
+---
+
+<h3 class="sr-only" id={id}>{title}</h3>
+<ul aria-labelledby={id} class={"text-blue-sj text-4 leading-[1.75] flex flex-col gap-2" + (!included ? " opacity-50"
+    : "" )}>
+    {items.map((i) => (<li class="flex items-center gap-6">
+        <>
+            {included &&
+            <Checkmark />}
+        </>
+        {!included && <span class="w-[0.875rem] aspect-square" /> }
+        <span>
+            {i}
+        </span>
+    </li>))}
+</ul>

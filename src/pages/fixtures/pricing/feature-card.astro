@@ -1,0 +1,13 @@
+---
+import FeatureCard from "../../../components/Pricing/FeatureCard/FeatureCard.astro";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout>
+    <div class="p-6">
+        <FeatureCard title="Free Plan" desc="Build and test using our core set of products with up to 100 API requests"
+            price="$0.00" included={["Transactions", "Auth" , "Identity" ]} notIncluded={["Investments", "Assets"
+            , "Liabilities" , "Income" ]} />
+    </div>
+
+</Layout>
