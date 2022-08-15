@@ -1,0 +1,28 @@
+---
+import FeatureCard from "../FeatureCard/FeatureCard.astro";
+
+const items = ["Transactions", "Auth", "Identity", "Investments", "Assets", "Liabilities", "Income"];
+---
+
+<section
+    class="px-6 md:px-10 box-content max-w-screen-container mx-auto flex flex-col md:flex-row gap-12 md:gap-2 lg:gap-8">
+    <div>
+        <FeatureCard title="Free Plan" desc="Build and test using our core set of products with up to 100 API requests "
+            price="$0.00" included={items.slice(0, 3)} notIncluded={items.slice(3)} />
+    </div>
+    <div>
+        <FeatureCard title="Basic Plan" desc="Launch your project with unlimited requests and no contractual minimums "
+            price="$249.00" included={items.slice(0, 5)} notIncluded={items.slice(5)} />
+    </div>
+    <div>
+        <FeatureCard title="Premium Plan"
+            desc="Get tailored solutions, volume pricing, and dedicated support for your team " price="$499.00"
+            included={items} notIncluded={[]} />
+    </div>
+</section>
+
+<style>
+    section>* {
+        flex-basis: 100%;
+    }
+</style>

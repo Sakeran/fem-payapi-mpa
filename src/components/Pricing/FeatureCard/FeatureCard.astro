@@ -25,9 +25,11 @@ const { title, desc, price, included, notIncluded } = Astro.props as Props;
         {price}</p>
 
     <div class="my-6 py-6 self-stretch flex flex-col border-blue-sj/25 border-t border-b">
-        <div class="w-max mx-auto lg:mx-0">
+        <div class="w-max mx-auto lg:mx-0 space-y-2">
             <FeatureList tierName={title} included={true} items={included} />
-            <FeatureList tierName={title} included={false} items={notIncluded} />
+            {notIncluded.length > 0 &&
+            <FeatureList tierName={title} included={false} items={notIncluded} />}
+
 
         </div>
     </div>
