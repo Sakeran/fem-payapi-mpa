@@ -1,0 +1,70 @@
+---
+
+export interface Props {
+    label: string;
+    name: string;
+    type?: "text" | "email",
+    required?: boolean,
+    placeholder?: string;
+}
+
+const { type = "text", required = false, placeholder = "", label, name } = Astro.props as Props;
+
+const id = name + "-" + Math.random().toString().slice(3);
+---
+
+<div data-text-input="true" class="flex flex-col gap-2">
+    <label class="sr-only" for={id}>{label}</label>
+    <input
+        class="bg-transparent text-blue-sj/50 focus-visible:text-blue-sj hover:text-blue-sj hover focus-visible:outline-none pl-5 pb-4 border-current border-b text-15p leading-card"
+        name={name} type={type} id={id} placeholder={placeholder} required={required ? "true" : "false" } />
+    <p class="pl-5 text-15p invisible text-red/50">This field can't be empty</p>
+</div>
+
+<style lang="postcss">
+    input:invalid:not([data-controlled="true"]),
+    input[data-errors="true"] {
+        @apply text-red/50;
+    }
+
+    input:invalid:not([data-controlled="true"])+p,
+    input[data-errors="true"]+p {
+        visibility: visible;
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        const inputContainers = document.querySelectorAll('[data-text-input="true"]');
+
+        inputContainers.forEach(ic => {
+            const input = ic.querySelector("input");
+            const errors = ic.querySelector("p");
+
+            if (!(input && errors)) throw new Error("Missing required form element");
+
+            input.dataset.controlled = "true";
+            input.dataset.errors = "false";
+
+            const check = () => {
+                const hasErrors = !input.checkValidity();
+                input.dataset.errors = hasErrors.toString();
+
+                if (!hasErrors) return;
+
+                if (input.required && input.value.length == 0) {
+                    errors.textContent = "This field can't be empty"
+                    return;
+                }
+
+                if (input.type == "email" && input.value.length > 0) {
+                    errors.textContent = "Enter a valid email address"
+                    return;
+                }
+            }
+
+            input.addEventListener("input", check);
+            input.addEventListener("blur", check);
+        })
+    })()
+</script>

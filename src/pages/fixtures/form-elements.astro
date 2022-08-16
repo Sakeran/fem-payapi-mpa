@@ -1,0 +1,22 @@
+---
+import Checkbox from "../../components/Forms/Checkbox/Checkbox.astro";
+import TextArea from "../../components/Forms/TextArea/TextArea.astro";
+import TextInput from "../../components/Forms/TextInput/TextInput.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <div class="p-6 space-y-4">
+        <h2>Text Input</h2>
+        <TextInput name="name" label="Name" type={"text"} placeholder="Name" required />
+
+        <h2>Email Input</h2>
+        <TextInput name="email" label="Email Address" type={"email"} placeholder="Email Address" required />
+
+        <h2>Message Input</h2>
+        <TextArea label="Message" name="message" placeholder="Message" required />
+
+        <h2>Checkbox</h2>
+        <Checkbox name="ml-optin" label="Stay up-to-date with company announcements and updates to our API" />
+    </div>
+</Layout>

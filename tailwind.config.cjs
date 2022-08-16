@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     // Overrides
     colors: {
+      current: "currentcolor",
       pink: {
         dark: "hsl(337, 48%, 49%)",
         charm: "hsl(337, 60%, 64%)",

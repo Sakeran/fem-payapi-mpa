@@ -1,0 +1,56 @@
+---
+export interface Props {
+    label: string;
+    name: string;
+    required?: boolean,
+    placeholder?: string;
+}
+
+const { required = false, placeholder = "", label, name } = Astro.props as Props;
+
+const id = name + "-" + Math.random().toString().slice(3);
+---
+
+<div data-text-area="true" class="flex flex-col gap-2">
+    <label class="sr-only" for={id}>{label}</label>
+    <textarea
+        class="block w-full min-h-[5.5rem] resize-none bg-transparent text-blue-sj/50 focus-visible:text-blue-sj hover:text-blue-sj hover focus-visible:outline-none pl-5 pb-4 border-current border-b text-15p leading-card"
+        id={id} required={required ? "true" : "false" } placeholder={placeholder} name={name}></textarea>
+    <p class="pl-5 text-15p invisible text-red/50">Please enter a message</p>
+</div>
+
+<style lang="postcss">
+    textarea:invalid:not([data-controlled="true"]),
+    textarea[data-errors="true"] {
+        @apply text-red/50;
+    }
+
+    textarea:invalid:not([data-controlled="true"])+p,
+    textarea[data-errors="true"]+p {
+        visibility: visible;
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        const taContainers = document.querySelectorAll('[data-text-area="true"]');
+
+        taContainers.forEach(tac => {
+            const textArea = tac.querySelector("textArea");
+            const errors = tac.querySelector("p");
+
+            if (!(textArea && errors)) throw new Error("Missing required form element");
+
+            textArea.dataset.controlled = "true";
+            textArea.dataset.errors = "false";
+
+            const check = () => {
+                const hasErrors = !textArea.checkValidity();
+                textArea.dataset.errors = hasErrors.toString();
+            }
+
+            textArea.addEventListener("input", check);
+            textArea.addEventListener("blur", check);
+        })
+    })()
+</script>
