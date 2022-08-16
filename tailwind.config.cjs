@@ -64,7 +64,7 @@ module.exports = {
         h2: "1.166",
         "h3-big": 1.25,
         "h3-small": 1.388,
-        h4: "1.333rem",
+        h4: "1.333",
       },
 
       screens: {

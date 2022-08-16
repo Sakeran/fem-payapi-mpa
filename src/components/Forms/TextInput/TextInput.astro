@@ -13,15 +13,19 @@ const { type = "text", required = false, placeholder = "", label, name } = Astro
 const id = name + "-" + Math.random().toString().slice(3);
 ---
 
-<div data-text-input="true" class="flex flex-col gap-2">
+<div data-text-input="true" class="flex flex-col">
     <label class="sr-only" for={id}>{label}</label>
     <input
         class="bg-transparent text-blue-sj/50 focus-visible:text-blue-sj hover:text-blue-sj hover focus-visible:outline-none pl-5 pb-4 border-current border-b text-15p leading-card"
         name={name} type={type} id={id} placeholder={placeholder} required={required ? "true" : "false" } />
-    <p class="pl-5 text-15p invisible text-red/50">This field can't be empty</p>
+    <p class="pl-5 -mb-2 mt-2 text-15p text-red/50">This field can't be empty</p>
 </div>
 
 <style lang="postcss">
+    p {
+        visibility: collapse;
+    }
+
     input:invalid:not([data-controlled="true"]),
     input[data-errors="true"] {
         @apply text-red/50;

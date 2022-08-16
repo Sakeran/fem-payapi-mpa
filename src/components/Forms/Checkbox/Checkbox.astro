@@ -9,15 +9,15 @@ const { label, name } = Astro.props as Props;
 const id = name + "-" + Math.random().toString().slice(3);
 ---
 
-<div class="flex items-center gap-6">
+<div class="flex items-center gap-6 ">
     <div class="w-6 aspect-square grid place-items-center">
-        <input type="checkbox" name={name} id={id}>
+        <input class="cursor-pointer" type="checkbox" name={name} id={id}>
         <svg class="hidden pointer-events-none" width="0.9375rem" height="0.8125rem" viewBox="0 0 15 13" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M2 6.97348L5.17296 10.1464L13.3194 2" stroke="white" stroke-width="3" />
         </svg>
     </div>
-    <label class="text-15p -tracking-12 leading-card text-blue-sj" for={id}>{label}</label>
+    <label class="text-15p -tracking-12 leading-card text-blue-sj cursor-pointer" for={id}>{label}</label>
 </div>
 
 <style lang="postcss">

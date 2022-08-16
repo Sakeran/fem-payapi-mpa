@@ -1,0 +1,64 @@
+---
+import SecondaryButton from "../components/Buttons/SecondaryButton.astro";
+import FooterCTA from "../components/FooterCTA/FooterCTA.astro";
+import Checkbox from "../components/Forms/Checkbox/Checkbox.astro";
+import TextArea from "../components/Forms/TextArea/TextArea.astro";
+import TextInput from "../components/Forms/TextInput/TextInput.astro";
+import Header from "../components/Header/Header.astro";
+import Clients from "../components/Index/Clients/Clients.astro";
+import LogoGrid from "../components/LogoGrid/LogoGrid.astro";
+import PlanFeatures from "../components/Pricing/PlanFeatures/PlanFeatures.astro";
+import Layout from "../layouts/Layout.astro"
+import Footer from "./fixtures/footer.astro";
+
+---
+
+<Layout>
+    <Header />
+    <main>
+        <div class="mt-12 md:mt-19 lg:mt-[5.125rem] mx-auto box-content max-w-screen-container px-6 md:px-10">
+            <h2
+                class="text-blue-sj max-w-[21ch] lg:max-w-[26ch] mx-auto lg:mx-0 text-center lg:text-start text-8 md:text-12 lg:text-14 leading-[1.125] md:leading-h2 lg:leading-none -tracking-25 md:-tracking-37 lg:-tracking-43">
+                Submit a help request and we’ll get in touch shortly.</h2>
+        </div>
+
+        <div class="mt-10 md:mt-14 lg:mt-11">
+            <div
+                class="px-6 md:px-10 box-content max-w-screen-container mx-auto flex flex-col items-center lg:flex-row gap-20 md:gap-16 lg:gap-0">
+                <!-- FORM -->
+                <div class="max-w-[27.75rem]">
+                    <form action="/contact" class="flex flex-col gap-6">
+                        <TextInput label="Name" placeholder="Name" required name="name" />
+                        <TextInput type={"email"} label="Email Address" placeholder="Email Address" required
+                            name="email" />
+                        <TextInput label="Company Name" placeholder="Company Name" name="company" />
+                        <TextInput label="Title" placeholder="Title" required name="title" />
+                        <TextArea label="Message" name="message" required placeholder="Message" />
+                        <Checkbox label="Stay up-to-date with company announcements and updates to our API"
+                            name="ml-optin" />
+                        <button
+                            class="self-start text-blue-sj bg-transparent enabled:hover:text-white-pure enabled:focus-visible:text-white-pure enabled:hover:bg-blue-sj enabled:focus-visible:bg-blue-sj border-blue-sj min-h-[3rem] px-12 py-2 text-15 enabled:motion-safe:transition-colors enabled:motion-safe:ease-in-out disabled:opacity-50 -tracking-12 font-bold border rounded-full "
+                            formaction="/contact">Submit</button>
+                    </form>
+                </div>
+
+                <!-- CLIENTS -->
+                <div class="text-blue-sj max-w-[50ch] flex flex-col items-center lg:max-w-none lg:basis-1/2 lg:ml-auto">
+                    <h2 class="mb-8 lg:mb-10 text-6 -tracking-18 leading-h4 text-center lg:text-start opacity-75">Join
+                        the
+                        thousands of innovators already
+                        building with us</h2>
+                    <LogoGrid />
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 md:mt-25 lg:mt-20">
+            <FooterCTA />
+        </div>
+
+        <div class="mt-20 md:mt-25 lg:mt-24">
+            <Footer />
+        </div>
+    </main>
+</Layout>
