@@ -36,7 +36,7 @@ import CompanyStats from "../components/About/CompanyStats/CompanyStats.astro";
                     traditional financial institutions and developers.</p>
             </TextSection>
 
-            <div class="mt-7 lg:mt-11 lg:mb-4">
+            <div class="bg-circle relative mt-7 lg:mt-11 lg:mb-4">
                 <picture>
                     <source srcset="/assets/images/about/desktop/image-team-members.jpg" media="(min-width: 1024px)">
                     <source srcset="/assets/images/about/tablet/image-team-members.jpg" media="(min-width: 768px)">
@@ -45,7 +45,7 @@ import CompanyStats from "../components/About/CompanyStats/CompanyStats.astro";
                 </picture>
             </div>
 
-            <div class="lg:mb-7">
+            <div class="lg:mb-7 z-10">
                 <CompanyStats />
             </div>
 
@@ -73,3 +73,24 @@ import CompanyStats from "../components/About/CompanyStats/CompanyStats.astro";
         <FooterComponent />
     </div>
 </Layout>
+
+<style lang="postcss">
+    @media screen(lg) {
+        .bg-circle::before {
+            content: "";
+
+            width: min(50vw, 48.75rem);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: theme("colors.blue.sj");
+            opacity: 0.15;
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+
+            transform: translate(-66%, -50%);
+            z-index: -1;
+        }
+    }
+</style>
