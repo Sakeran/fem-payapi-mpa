@@ -1,0 +1,18 @@
+---
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<div
+    class="px-6 md:px-10 max-w-screen-container box-content mx-auto flex flex-col md:flex-row text-center md:text-start gap-4 md:gap-3 lg:gap-8">
+    <h2 class="text-6 md:text-8 text-blue-sj -tracking-18 md:-tracking-25 leading-h4 md:leading-tight md:basis-4/12">
+        {title}</h2>
+
+    <div
+        class="text-15p text-blue-light-sj leading-[1.75] md:basis-8/12 lg:basis-7/12 max-w-[60ch] mx-auto lg:max-w-none">
+        <slot />
+    </div>
+</div>
