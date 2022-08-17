@@ -16,3 +16,9 @@ let styles = full ? "w-full " + colorStyles : colorStyles;
     }>
     <slot />
 </a>
+
+<style lang="postcss">
+    a {
+        filter: drop-shadow(0.625rem 0.625rem 1.362rem theme("colors.blue.sj" / 25%));
+    }
+</style>
