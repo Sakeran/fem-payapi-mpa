@@ -29,6 +29,12 @@ const { title, pageClass } = Astro.props as Props;
 </head>
 
 <body class={"overflow-x-hidden" + (pageClass ? " " + pageClass : "" )}>
+	<div
+		class="absolute top-0 left-0 right-0 bg-blue-mirage text-white-link-water p-4 flex justify-center z-50 -translate-y-full focus-within:-translate-y-0 motion-safe:transition-transform">
+		<a href="#main-content"
+			class="focus-visible:outline-dashed focus-visible:outline-white-link-water/75 focus-visible:outline-offset-4">Skip
+			to main content</a>
+	</div>
 	<slot />
 </body>
 

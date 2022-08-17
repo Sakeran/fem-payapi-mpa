@@ -11,54 +11,63 @@ import CompanyStats from "../components/About/CompanyStats/CompanyStats.astro";
 <Layout>
     <Header />
 
-    <div class="mt-12 md:mt-19 lg:mt-20 px-7 md:px-10 box-content mx-auto max-w-screen-container">
-        <h1
-            class="max-w-[27ch] mx-auto lg:mx-0 text-blue-sj text-8 md:text-12 lg:text-14 leading-[1.125] md:leading-h2 lg:leading-none -tracking-25 md:-tracking-37 lg:-tracking-43 text-center lg:text-start">
-            We empower innovators
-            by delivering access to the financial system</h1>
-    </div>
+    <main id="main-content">
 
-    <div class="mt-10 md:mt-14 lg:mt-20 flex flex-col items-stretch gap-12 md:gap-16 lg:gap-14">
-        <TextSection title="Our Vision">
-            <p>Our main goal is to build beautiful consumer experiences along with developer-friendly infrastructure.
-                The result is an intelligent tool that gives everyone the ability to create amazing products that solve
-                big problems. We are deeply focused on democratizing financial services through technology.</p>
-        </TextSection>
-
-        <TextSection title="Our Business">
-            <p>At the core of our platform is the technical infrastructure APIs that connect consumers. Our innovative
-                product provides key insights for businesses and individuals, as well as robust reporting for
-                traditional financial institutions and developers.</p>
-        </TextSection>
-
-        <div class="mt-7 lg:mt-11 lg:mb-4">
-            <picture>
-                <source srcset="/assets/images/about/desktop/image-team-members.jpg" media="(min-width: 1024px)">
-                <source srcset="/assets/images/about/tablet/image-team-members.jpg" media="(min-width: 768px)">
-                <img class="object-cover w-full block" src="/assets/images/about/mobile/image-team-members.jpg"
-                    alt="Three coworkers sit at a coffee shop table. The man on the right is typing into an Apple laptop, while the woman in the center leans over to watch the screen. A third man sits on the left, sipping coffee and listening to the other two.">
-            </picture>
+        <div class="mt-12 md:mt-19 lg:mt-20 px-7 md:px-10 box-content mx-auto max-w-screen-container">
+            <h1
+                class="max-w-[27ch] mx-auto lg:mx-0 text-blue-sj text-8 md:text-12 lg:text-14 leading-[1.125] md:leading-h2 lg:leading-none -tracking-25 md:-tracking-37 lg:-tracking-43 text-center lg:text-start">
+                We empower innovators
+                by delivering access to the financial system</h1>
         </div>
 
-        <div class="lg:mb-7">
-            <CompanyStats />
+        <div class="mt-10 md:mt-14 lg:mt-20 flex flex-col items-stretch gap-12 md:gap-16 lg:gap-14">
+            <TextSection title="Our Vision">
+                <p>Our main goal is to build beautiful consumer experiences along with developer-friendly
+                    infrastructure.
+                    The result is an intelligent tool that gives everyone the ability to create amazing products that
+                    solve
+                    big problems. We are deeply focused on democratizing financial services through technology.</p>
+            </TextSection>
+
+            <TextSection title="Our Business">
+                <p>At the core of our platform is the technical infrastructure APIs that connect consumers. Our
+                    innovative
+                    product provides key insights for businesses and individuals, as well as robust reporting for
+                    traditional financial institutions and developers.</p>
+            </TextSection>
+
+            <div class="mt-7 lg:mt-11 lg:mb-4">
+                <picture>
+                    <source srcset="/assets/images/about/desktop/image-team-members.jpg" media="(min-width: 1024px)">
+                    <source srcset="/assets/images/about/tablet/image-team-members.jpg" media="(min-width: 768px)">
+                    <img class="object-cover w-full block" src="/assets/images/about/mobile/image-team-members.jpg"
+                        alt="Three coworkers sit at a coffee shop table. The man on the right is typing into an Apple laptop, while the woman in the center leans over to watch the screen. A third man sits on the left, sipping coffee and listening to the other two.">
+                </picture>
+            </div>
+
+            <div class="lg:mb-7">
+                <CompanyStats />
+            </div>
+
+            <TextSection title="The Culture">
+                <p>We strongly believe there's always an opportunity to learn from each other outside of day-to-day
+                    work,
+                    whether it's company-wide offsites, internal hackathons, or co-worker meetups. We always value
+                    cross-team collaboration and diversity of thought, no matter the job title.</p>
+            </TextSection>
+
+            <TextSection title="The People">
+                <p>We're all passionate about building a more efficient and inclusive financial infrastructure together.
+                    At
+                    PayAPI, we have diverse backgrounds and skills.</p>
+            </TextSection>
         </div>
 
-        <TextSection title="The Culture">
-            <p>We strongly believe there's always an opportunity to learn from each other outside of day-to-day work,
-                whether it's company-wide offsites, internal hackathons, or co-worker meetups. We always value
-                cross-team collaboration and diversity of thought, no matter the job title.</p>
-        </TextSection>
+        <div class="mt-12 md:mt-18 lg:mt-25">
+            <FooterCTA />
+        </div>
+    </main>
 
-        <TextSection title="The People">
-            <p>We're all passionate about building a more efficient and inclusive financial infrastructure together. At
-                PayAPI, we have diverse backgrounds and skills.</p>
-        </TextSection>
-    </div>
-
-    <div class="mt-12 md:mt-18 lg:mt-25">
-        <FooterCTA />
-    </div>
 
     <div class="mt-20 md:mt-25 lg:mt-24">
         <FooterComponent />

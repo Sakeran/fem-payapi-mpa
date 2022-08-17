@@ -10,7 +10,7 @@ import Layout from "../layouts/Layout.astro"
 
 <Layout pageClass="index">
 	<Header />
-	<main>
+	<main id="main-content">
 		<div class="mt-8 md:mt-12 lg:mt-18">
 			<Hero />
 		</div>
@@ -27,8 +27,8 @@ import Layout from "../layouts/Layout.astro"
 			<FooterCTA />
 		</div>
 
-		<div class="mt-20 md:mt-25">
-			<FooterComponent />
-		</div>
 	</main>
+	<div class="mt-20 md:mt-25">
+		<FooterComponent />
+	</div>
 </Layout>
