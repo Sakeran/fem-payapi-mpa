@@ -16,4 +16,4 @@ As mentioned above, the site itself came together fairly easily once I managed t
 
 One important lesson I learned had to do with the various SVG illustrations on the index page: if you’re going to inline SVGs, particularly those using the `<defs>` element, make sure all of its ids are *globally unique*, since the SVGs can see each other once you’ve stuck them into the same markup. Equivalently, if some part of some SVG is inexplicably blurry, cropped, or otherwise mangled, there’s a good chance it’s borrowing an effect or path element from a neighboring graphic. It’s a good idea to check for this error *first* before spending two hours debugging a graphic by hand, which is a lesson I won’t be forgetting any time soon.
 
-A live version of this site can be found [here](#).
+A live version of this site can be found [here](https://amorse-fem-payapi.netlify.app/).
