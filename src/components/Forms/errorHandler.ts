@@ -31,7 +31,6 @@ export default function setupErrors(input: FormElement, errors: ErrorElement) {
   let checkHandle: any = 0;
   const check = () => {
     // Debounce the eventual setErrors call.
-    console.log("checking");
     if (checkHandle) {
       clearTimeout(checkHandle);
       checkHandle = 0;
